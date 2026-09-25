@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="sw-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0c1222"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" stroke="url(#sw-grad)" stroke-width="2" stroke-opacity="0.6"/>
+  <!-- Database Stack & Pipeline Node -->
+  <path d="M18 20C18 16.5 24.268 14 32 14C39.732 14 46 16.5 46 20C46 23.5 39.732 26 32 26C24.268 26 18 23.5 18 20Z" fill="url(#sw-grad)"/>
+  <path d="M18 26C18 29.5 24.268 32 32 32C39.732 32 46 29.5 46 26V33C46 36.5 39.732 39 32 39C24.268 39 18 36.5 18 33V26Z" fill="#0284c7" fill-opacity="0.8"/>
+  <path d="M18 35C18 38.5 24.268 41 32 41C39.732 41 46 38.5 46 35V42C46 45.5 39.732 48 32 48C24.268 48 18 45.5 18 42V35Z" fill="#0369a1"/>
+  <circle cx="48" cy="18" r="4" fill="#38bdf8"/>
+  <circle cx="48" cy="18" r="7" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2"/>
+</svg>
