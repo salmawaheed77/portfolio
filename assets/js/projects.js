@@ -5,6 +5,72 @@
 
 const PROJECTS_DATA = [
   {
+    id: 'python-calculator',
+    title: 'Python Desktop Calculator Application',
+    tagline: 'Modern Object-Oriented Calculator GUI Engineered in Python & Tkinter',
+    category: 'python-etl',
+    categoryLabel: 'Python OOP & GUI',
+    thumbnail: 'assets/images/projects/python-calculator.jpg',
+    metrics: 'Object-Oriented Design | Event-Driven Tkinter GUI | Defensive Error Handling',
+    technologies: ['Python', 'Tkinter', 'OOP', 'Event Handling', 'GUI Architecture', 'Arithmetic Engine'],
+    githubUrl: 'https://github.com/salmawaheed77/Python-Calculator',
+    liveDemoUrl: 'https://github.com/salmawaheed77/Python-Calculator#readme',
+    summary: 'A simple and responsive calculator application built using Python and Tkinter. Implements an object-oriented event-driven architecture performing standard arithmetic operations with defensive error catching and clean state handling.',
+    problem: 'Basic calculation tools often suffer from rigid terminal-only inputs, lack defensive safeguards against zero-division errors, and lack structured object-oriented separation between user interface controls and calculation logic.',
+    solution: 'Designed and implemented an ergonomic graphical user interface in Python with Tkinter. Developed an event-driven calculator class managing expression state, defensive try-except blocks for arithmetic safety, responsive button grid layout, and keyboard event bindings.',
+    keyFeatures: [
+      'Built a simple, robust Python application performing core arithmetic operations (+, -, *, /)',
+      'Engineered with Tkinter GUI featuring clean dark theme aesthetics and responsive button grids',
+      'Defensive error recovery handling invalid syntax and zero-division exceptions smoothly',
+      'Object-Oriented Programming (OOP) architecture separating math evaluation from UI render state',
+      'Supports expression chaining, instant clear (C), and decimal precision formatting'
+    ],
+    codeSnippet: `import tkinter as tk
+from tkinter import messagebox
+
+class PythonCalculator:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Python Calculator — Salma Waheed")
+        self.root.geometry("340x480")
+        self.root.configure(bg="#09070f")
+        self.root.resizable(False, False)
+        self.expression = ""
+
+        # LCD Display Screen
+        self.display = tk.Entry(
+            root, font=('JetBrains Mono', 22, 'bold'),
+            bg="#161224", fg="#f8fafc", bd=0, justify="right"
+        )
+        self.display.pack(fill="x", padx=16, pady=20, ipady=12)
+        self.create_buttons()
+
+    def press(self, key):
+        if key == "=":
+            try:
+                result = str(round(eval(self.expression), 4))
+                self.display.delete(0, tk.END)
+                self.display.insert(tk.END, result)
+                self.expression = result
+            except ZeroDivisionError:
+                messagebox.showerror("Math Error", "Division by zero is undefined")
+            except Exception:
+                messagebox.showerror("Error", "Invalid Expression")
+        elif key == "C":
+            self.expression = ""
+            self.display.delete(0, tk.END)
+        else:
+            self.expression += str(key)
+            self.display.delete(0, tk.END)
+            self.display.insert(tk.END, self.expression)`,
+    gallery: [
+      {
+        src: 'assets/images/projects/python-calculator.jpg',
+        caption: 'Python Tkinter Calculator UI: Clean Dark Theme and Object-Oriented State Engine'
+      }
+    ]
+  },
+  {
     id: 'bike-trip-analysis',
     title: 'Divvy Bike-Trip Data Pipeline & Analytics',
     tagline: '5.71M+ Rides Cleaned & Visualized via Automated Python ETL',
@@ -313,8 +379,12 @@ function initModalListeners() {
 }
 
 function openCaseStudy(projectId) {
-  const project = PROJECTS_DATA.find(p => p.id === projectId);
-  if (!project) return;
+  const currentIndex = PROJECTS_DATA.findIndex(p => p.id === projectId);
+  if (currentIndex === -1) return;
+  const project = PROJECTS_DATA[currentIndex];
+
+  const prevProject = PROJECTS_DATA[(currentIndex - 1 + PROJECTS_DATA.length) % PROJECTS_DATA.length];
+  const nextProject = PROJECTS_DATA[(currentIndex + 1) % PROJECTS_DATA.length];
 
   const modal = document.getElementById('case-study-modal');
   const modalContent = document.getElementById('modal-dynamic-content');
@@ -327,9 +397,11 @@ function openCaseStudy(projectId) {
         <h3>${project.title}</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem;">${project.tagline}</p>
       </div>
-      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Case Study">
-        <i data-lucide="x"></i>
-      </button>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Case Study">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
     </div>
 
     <div class="modal-body">
@@ -391,7 +463,7 @@ function openCaseStudy(projectId) {
 
       <!-- Code Walkthrough -->
       <div class="modal-section-block">
-        <h4><i data-lucide="code-2"></i> Pipeline Implementation Snippet</h4>
+        <h4><i data-lucide="code-2"></i> Implementation Walkthrough</h4>
         <pre class="code-preview-box"><code>${escapeHtml(project.codeSnippet)}</code></pre>
       </div>
 
@@ -403,17 +475,34 @@ function openCaseStudy(projectId) {
         </div>
       </div>
 
+      <!-- Next / Previous Project Navigation -->
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); margin: 2rem 0; flex-wrap: wrap; gap: 1rem;">
+        <button class="btn btn-outline btn-sm" onclick="openCaseStudy('${prevProject.id}')">
+          <i data-lucide="arrow-left"></i> Previous: ${prevProject.title.length > 25 ? prevProject.title.substring(0, 25) + '...' : prevProject.title}
+        </button>
+        <button class="btn btn-outline btn-sm" onclick="openCaseStudy('${nextProject.id}')">
+          Next: ${nextProject.title.length > 25 ? nextProject.title.substring(0, 25) + '...' : nextProject.title} <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+
       <!-- Modal Footer -->
-      <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
-        <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          <i data-lucide="github"></i> View GitHub Repository
-        </a>
-        <button class="btn btn-secondary" onclick="closeCaseStudy()">Close Window</button>
+      <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <i data-lucide="github"></i> View GitHub Repository
+          </a>
+          <a href="${project.liveDemoUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <i data-lucide="external-link"></i> Live Documentation
+          </a>
+        </div>
+        <button class="btn btn-outline" onclick="closeCaseStudy()">Close Window</button>
       </div>
     </div>
   `;
 
   modal.classList.add('open');
+  modal.scrollTop = 0;
+  modalContent.scrollTop = 0;
   document.body.style.overflow = 'hidden';
 
   // Re-bind close button

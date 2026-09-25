@@ -242,7 +242,7 @@
 
             <!-- Floating Pipeline Badge 1 -->
             <div class="floating-badge floating-badge-1">
-              <div style="width: 2rem; height: 2rem; border-radius: 6px; background: rgba(14, 165, 233, 0.2); display: flex; align-items: center; justify-content: center; color: var(--primary-light);">
+              <div style="width: 2rem; height: 2rem; border-radius: 6px; background: rgba(139, 92, 246, 0.2); display: flex; align-items: center; justify-content: center; color: var(--primary-light);">
                 <i data-lucide="cloud"></i>
               </div>
               <div>
@@ -253,7 +253,7 @@
 
             <!-- Floating Pipeline Badge 2 -->
             <div class="floating-badge floating-badge-2">
-              <div style="width: 2rem; height: 2rem; border-radius: 6px; background: rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-emerald);">
+              <div style="width: 2rem; height: 2rem; border-radius: 6px; background: rgba(244, 114, 182, 0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-pink);">
                 <i data-lucide="database"></i>
               </div>
               <div>
@@ -540,7 +540,7 @@
           <div class="skill-card reveal reveal-delay-2" data-category="database">
             <div>
               <div class="skill-card-top">
-                <div class="skill-icon-box" style="color: #6366f1; background: rgba(99, 102, 241, 0.1);">
+                <div class="skill-icon-box" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.12);">
                   <i data-lucide="database"></i>
                 </div>
                 <div>
@@ -557,6 +557,30 @@
               <span class="tech-tag">Index Tuning</span>
               <span class="tech-tag">Stored Procedures</span>
               <span class="tech-tag">CTEs</span>
+            </div>
+          </div>
+
+          <!-- ERD Diagrams & Data Modeling -->
+          <div class="skill-card reveal reveal-delay-2" data-category="database">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box" style="color: #ec4899; background: rgba(236, 72, 153, 0.12);">
+                  <i data-lucide="network"></i>
+                </div>
+                <div>
+                  <h3 class="skill-card-title">ERD & Data Modeling</h3>
+                  <span class="skill-card-cat">Database Architecture</span>
+                </div>
+              </div>
+              <p class="skill-card-desc">
+                Entity-Relationship Diagrams (ERD), conceptual and logical data models, relationship cardinality, and third normal form (3NF).
+              </p>
+            </div>
+            <div class="skill-tags-wrap">
+              <span class="tech-tag">ERD Diagrams</span>
+              <span class="tech-tag">Data Modeling</span>
+              <span class="tech-tag">3NF Normalization</span>
+              <span class="tech-tag">Database Management</span>
             </div>
           </div>
 
@@ -864,7 +888,7 @@
             
             <div class="card">
               <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-                <div style="width: 2.5rem; height: 2.5rem; border-radius: var(--radius-sm); background: rgba(14, 165, 233, 0.12); color: var(--primary-light); display: flex; align-items: center; justify-content: center;">
+                <div style="width: 2.5rem; height: 2.5rem; border-radius: var(--radius-sm); background: rgba(139, 92, 246, 0.14); color: var(--primary-light); display: flex; align-items: center; justify-content: center;">
                   <i data-lucide="languages"></i>
                 </div>
                 <div>
@@ -874,29 +898,25 @@
               </div>
 
               <div style="display: flex; flex-direction: column; gap: 0.85rem;">
-                <div>
-                  <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem;">
-                    <span>Arabic</span>
-                    <span style="color: var(--primary-light);">Native Proficiency</span>
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0.85rem; background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i data-lucide="check" style="color: var(--accent-emerald); width: 1rem; height: 1rem;"></i>
+                    <strong style="font-size: 0.925rem;">Arabic</strong>
                   </div>
-                  <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden;">
-                    <div style="height: 100%; width: 100%; background: var(--gradient-brand);"></div>
-                  </div>
+                  <span class="badge badge-success">Native Language</span>
                 </div>
 
-                <div>
-                  <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem;">
-                    <span>English</span>
-                    <span style="color: var(--primary-light);">Professional Working (B1)</span>
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0.85rem; background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i data-lucide="check" style="color: var(--primary-light); width: 1rem; height: 1rem;"></i>
+                    <strong style="font-size: 0.925rem;">English</strong>
                   </div>
-                  <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden;">
-                    <div style="height: 100%; width: 75%; background: var(--gradient-brand);"></div>
-                  </div>
+                  <span class="badge badge-primary">Intermediate (B1)</span>
                 </div>
               </div>
             </div>
 
-            <div class="card" style="background: rgba(14, 165, 233, 0.05); border-color: var(--border-medium);">
+            <div class="card" style="background: rgba(139, 92, 246, 0.06); border-color: var(--border-medium);">
               <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
                 <i data-lucide="file-check-2" style="color: var(--primary-light);"></i>
                 <h4 style="font-size: 1.05rem;">Verified Academic Credentials</h4>
@@ -905,7 +925,7 @@
                 Official transcripts and university records available for employer verification.
               </p>
               <a href="https://www.overleaf.com/read/ggwjysvnhybf#3912e5" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="width: 100%;">
-                <i data-lucide="external-link"></i> View Academic CV
+                <i data-lucide="external-link"></i> View Academic CV (Overleaf)
               </a>
             </div>
 
