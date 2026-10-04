@@ -184,6 +184,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  gap: 1rem;
 }
 
 .brand-logo {
@@ -191,15 +192,13 @@
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: var(--text-main);
-  letter-spacing: -0.01em;
+  flex-shrink: 0;
+  min-width: 0;
 }
 
 .brand-icon {
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.35rem;
+  height: 2.35rem;
   border-radius: var(--radius-md);
   background: var(--gradient-brand);
   display: flex;
@@ -210,31 +209,56 @@
   font-size: 0.95rem;
   font-family: var(--font-mono);
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.45);
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.brand-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.brand-logo:hover .brand-name {
+  color: var(--primary-light);
 }
 
 .brand-role {
   display: block;
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.68rem;
+  font-weight: 600;
   color: var(--text-subtle);
   font-family: var(--font-mono);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 1px;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.15rem;
+  flex-shrink: 1;
 }
 
 .nav-link {
-  font-size: 0.925rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
   padding: 0.4rem 0.2rem;
   position: relative;
+  white-space: nowrap;
   transition: color var(--transition-fast);
 }
 
@@ -290,12 +314,42 @@
   color: var(--text-main);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1240px) {
+  .nav-links {
+    gap: 0.85rem;
+  }
+  .nav-link {
+    font-size: 0.825rem;
+  }
+  .brand-name {
+    font-size: 0.925rem;
+  }
+}
+
+@media (max-width: 1120px) {
   .nav-links {
     display: none;
   }
   .mobile-nav-toggle {
     display: flex;
+  }
+}
+
+@media (max-width: 576px) {
+  .brand-icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.85rem;
+  }
+  .brand-name {
+    font-size: 0.825rem;
+    max-width: 175px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .brand-role {
+    font-size: 0.62rem;
   }
 }
 

@@ -5,6 +5,155 @@
 
 const PROJECTS_DATA = [
   {
+    id: 'cafe-sales-analysis',
+    title: 'Café Sales Performance & Business Intelligence',
+    tagline: 'Executive 6-Chart Revenue Matrix & Channel Density Analytics',
+    category: 'python-etl',
+    categoryLabel: 'Revenue & Sales Analytics',
+    thumbnail: 'assets/images/projects/cafe-sales-dashboard.png',
+    metrics: '3,800+ Units Analyzed | $7,000+ Monthly Revenue Peaks | 21.4% Salad Margin Lead',
+    technologies: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'EDA', 'Revenue Analytics', 'Jupyter Notebook'],
+    githubUrl: 'https://github.com/salmawaheed77/cafe-sales-analysis',
+    liveDemoUrl: 'https://github.com/salmawaheed77/cafe-sales-analysis#readme',
+    summary: 'An end-to-end data analytics project transforming raw café transactional logs into an executive-ready business intelligence dashboard. Discovers product volume drivers, evaluates monthly financial velocity, and analyzes payment channel preferences.',
+    problem: 'Café operators faced fragmented transaction records, unstandardized product categorizations, and unknown revenue distribution across menu items, making inventory planning and pricing optimization difficult.',
+    solution: 'Built a structured data processing pipeline in Python and Pandas to clean transactional logs, isolate anomalies, calculate item-level gross margins, compute monthly revenue trajectory, and synthesize a comprehensive 6-chart business intelligence matrix with Matplotlib and Seaborn.',
+    keyFeatures: [
+      'Engineered an executive 6-chart business intelligence matrix summarizing operational velocity',
+      'Identified coffee and salad as primary volume leaders, each surpassing 3,800+ units sold',
+      'Uncovered financial yield divergence: salads command 21.4% of revenue followed by sandwiches at 15.4%',
+      'Mapped seasonal revenue cycles highlighting March and October peaks breaking the $7,000 threshold',
+      'Segmented payment channel dynamics revealing high-value digital wallet dominance for premium orders'
+    ],
+    codeSnippet: `import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load raw cafe transactional logs
+df = pd.read_csv('cafe_sales.csv')
+df['transaction_date'] = pd.to_datetime(df['transaction_date'])
+df['month'] = df['transaction_date'].dt.strftime('%B')
+
+# Calculate total units and gross sales volume by menu item
+item_performance = df.groupby('item').agg(
+    total_units=('quantity', 'sum'),
+    gross_revenue=('total_amount', 'sum')
+).sort_values(by='gross_revenue', ascending=False)
+
+# Compute revenue share percentage
+item_performance['revenue_share_%'] = (
+    item_performance['gross_revenue'] / item_performance['gross_revenue'].sum()
+) * 100
+
+# Monthly sales trajectory over time
+monthly_trend = df.groupby(df['transaction_date'].dt.to_period('M'))['total_amount'].sum()`,
+    gallery: [
+      {
+        src: 'assets/images/projects/cafe-sales-dashboard.png',
+        caption: 'Café Sales Executive Dashboard: Product Volume, Revenue Share %, Monthly Trends, and Payment Methods'
+      }
+    ]
+  },
+  {
+    id: 'hr-workforce-analysis',
+    title: 'HR Workforce Analytics & Compensation Dashboard',
+    tagline: 'Departmental Performance Scores, Salary Distributions & Hiring Trends',
+    category: 'python-etl',
+    categoryLabel: 'HR & Workforce Analytics',
+    thumbnail: 'assets/images/projects/hr-workforce-dashboard.png',
+    metrics: 'Multi-Department Analysis | Salary Variance Modeling | Retention & Hiring Velocity',
+    technologies: ['Python', 'Pandas', 'Seaborn', 'Matplotlib', 'HR Analytics', 'Data Visualization', 'Jupyter Notebook'],
+    githubUrl: 'https://github.com/salmawaheed77/HR-Workforce-Analysis-',
+    liveDemoUrl: 'https://github.com/salmawaheed77/HR-Workforce-Analysis-#readme',
+    summary: 'An executive HR analytics and workforce intelligence dashboard designed to deliver clear insights into employee performance evaluations, departmental compensation structures, hiring trends over time, and organizational demographics.',
+    problem: 'Human resource departments struggle to identify salary inequities, quantify department-level performance distributions, and detect retention or hiring velocity shifts from static spreadsheet rosters.',
+    solution: 'Formulated an automated workforce evaluation pipeline using Python, Pandas, Matplotlib, and Seaborn. Ingested employee records, normalized salary brackets, performed cross-departmental statistical aggregation, and visualized compensation benchmarks alongside performance ratings.',
+    keyFeatures: [
+      'Evaluated employee performance distribution and score variance across operational sectors',
+      'Benchmarked average salary compensation and grade tiers by department to highlight equity',
+      'Analyzed historical hiring trends over time to identify staffing velocity and capacity planning',
+      'Explored gender diversity and demographic metrics across leadership and individual contributor roles',
+      'Generated unified executive dashboard visualizations with custom Seaborn styling and palette'
+    ],
+    codeSnippet: `import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load employee workforce data
+hr_df = pd.read_csv('hr_workforce_data.csv')
+
+# Department-level compensation and performance aggregation
+dept_summary = hr_df.groupby('department').agg(
+    headcount=('employee_id', 'count'),
+    avg_salary=('salary', 'mean'),
+    median_salary=('salary', 'median'),
+    avg_performance=('performance_score', 'mean')
+).reset_index()
+
+# Visualize salary distribution across departments
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=hr_df, x='department', y='salary', palette='crest')
+plt.title('Workforce Salary Distribution by Department')
+plt.xticks(rotation=45)
+plt.tight_layout()`,
+    gallery: [
+      {
+        src: 'assets/images/projects/hr-workforce-dashboard.png',
+        caption: 'HR Workforce Analytics Dashboard: Department Performance, Salary Spread, and Hiring Trends'
+      }
+    ]
+  },
+  {
+    id: 'student-admission-analysis',
+    title: 'Student Admission Analysis & Predictive Insights',
+    tagline: 'Anomaly Cleaning & Acceptance Pattern Analytics with Python & Seaborn',
+    category: 'python-etl',
+    categoryLabel: 'Python ETL & EDA',
+    thumbnail: 'assets/images/projects/student-admission-dashboard.png',
+    metrics: 'Outlier & Anomaly Removal | Score Distribution KDE | Acceptance Correlation',
+    technologies: ['Python', 'Pandas', 'Seaborn', 'Matplotlib', 'EDA', 'Data Cleaning', 'Jupyter Notebook'],
+    githubUrl: 'https://github.com/salmawaheed77/Student-Admission-Analysis',
+    liveDemoUrl: 'https://github.com/salmawaheed77/Student-Admission-Analysis#readme',
+    summary: 'A comprehensive college admissions analytics and statistical exploratory project built using Python, Pandas, and Seaborn to clean data entry anomalies, analyze test score distributions, and uncover key drivers influencing student acceptance.',
+    problem: 'Admissions datasets frequently contain data entry anomalies (e.g. 0% and 4% high school percentage scores) that distort statistical models, skew acceptance distributions, and mislead recruitment strategies.',
+    solution: 'Engineered a rigorous data cleaning pipeline identifying and filtering erroneous records. Conducted exploratory data analysis (EDA) with KDE score distributions, comparative demographic analyses, and correlation matrices to identify acceptance predictors.',
+    keyFeatures: [
+      'Identified and removed data entry outliers (such as 0% and 4% GPA scores) to guarantee statistical accuracy',
+      'Visualized admission test score distributions using histograms and Kernel Density Estimates (KDE)',
+      'Analyzed acceptance probability across secondary education streams and demographic brackets',
+      'Evaluated relationship between high school percentile standing and college admission success',
+      'Generated high-resolution analytical dashboard visual matrix ready for academic reporting'
+    ],
+    codeSnippet: `import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Ingest raw admissions data
+df = pd.read_csv('student_admissions.csv')
+
+# Clean data entry anomalies (filter out impossible 0% and 4% percentages)
+cleaned_df = df[
+    (df['high_school_percentage'] >= 35) & 
+    (df['admission_test_score'] > 0)
+].copy()
+
+# Compute acceptance rate correlation
+acceptance_summary = cleaned_df.groupby('school_stream').agg(
+    total_applicants=('student_id', 'count'),
+    admitted_count=('admission_status', lambda x: (x == 'Admitted').sum()),
+    acceptance_rate=('admission_status', lambda x: (x == 'Admitted').mean() * 100)
+).reset_index()
+
+# Plot admission test score distribution with KDE
+sns.histplot(data=cleaned_df, x='admission_test_score', hue='admission_status', kde=True)`,
+    gallery: [
+      {
+        src: 'assets/images/projects/student-admission-dashboard.png',
+        caption: 'Student Admission Analysis Dashboard: Test Score Distributions, Acceptance Rates, and Demographics'
+      }
+    ]
+  },
+  {
     id: 'python-calculator',
     title: 'Python Desktop Calculator Application',
     tagline: 'Modern Object-Oriented Calculator GUI Engineered in Python & Tkinter',
@@ -228,7 +377,7 @@ processed_df.write.partitionBy("year", "month").parquet("hdfs:///data/warehouse/
     tagline: '3NF Normalized Database Design with Index Optimization',
     category: 'databases',
     categoryLabel: 'Databases & SQL',
-    thumbnail: 'assets/images/projects/bike-trip-data-info.png',
+    thumbnail: 'assets/images/projects/mysql-database-schema.jpg',
     metrics: '3NF Normalization | B-Tree Indexing | Sub-millisecond joins',
     technologies: ['MySQL', 'Relational Modeling', 'SQL', 'Database Tuning', 'Stored Procedures'],
     githubUrl: 'https://github.com/salmawaheed77/portfolio',
@@ -242,25 +391,26 @@ processed_df.write.partitionBy("year", "month").parquet("hdfs:///data/warehouse/
       'Stored procedures for automated end-of-day analytics calculation',
       'ACID transactional safety compliance'
     ],
-    codeSnippet: `-- MySQL Analytical Aggregation with Window Functions
-WITH MonthlyMetrics AS (
-    SELECT 
-        station_id,
-        DATE_FORMAT(started_at, '%Y-%m') AS ride_month,
-        COUNT(ride_id) AS total_departures,
-        AVG(duration_min) AS avg_duration,
-        RANK() OVER (PARTITION BY DATE_FORMAT(started_at, '%Y-%m') ORDER BY COUNT(ride_id) DESC) as rank_in_month
-    FROM trip_records
-    GROUP BY station_id, DATE_FORMAT(started_at, '%Y-%m')
-)
-SELECT station_id, ride_month, total_departures, ROUND(avg_duration, 1) AS avg_min
-FROM MonthlyMetrics
-WHERE rank_in_month <= 5
-ORDER BY ride_month ASC, total_departures DESC;`,
+    codeSnippet: `-- MySQL Analytical Mart: Customer Order Velocity & Revenue Aggregation
+SELECT 
+    p.Name AS product_name,
+    c.CategoryName AS category_name,
+    COUNT(DISTINCT o.OrderID) AS total_orders,
+    SUM(od.Quantity) AS units_sold,
+    ROUND(SUM(od.Quantity * od.UnitPrice), 2) AS gross_revenue,
+    ROUND(AVG(od.UnitPrice), 2) AS avg_unit_price
+FROM Orders o
+INNER JOIN OrderDetails od ON o.OrderID = od.OrderID
+INNER JOIN Products p ON od.ProductID = p.ProductID
+INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+WHERE o.Status = 'Completed'
+GROUP BY p.ProductID, p.Name, c.CategoryName
+HAVING units_sold > 50
+ORDER BY gross_revenue DESC;`,
     gallery: [
       {
-        src: 'assets/images/projects/bike-trip-data-info.png',
-        caption: 'Relational schema columns, data types, and index verification'
+        src: 'assets/images/projects/mysql-database-schema.jpg',
+        caption: 'MySQL Relational Schema Architecture: 3NF Normalized E-Commerce Model with Foreign Keys & B-Tree Indexes'
       }
     ]
   }

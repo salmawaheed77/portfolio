@@ -1,4 +1,4 @@
-# Salma Waheed — Data Engineer Portfolio
+# Salma Waheed Fawzy Mohamed — Data Engineer Portfolio
 
 > **Production-Ready Personal Portfolio & Technical Resume**  
 > Computer Science & Statistics student turning raw, messy data into reliable pipelines and clear insight — with Python, SQL, and Microsoft Azure.
@@ -9,7 +9,7 @@
 - **Live Website**: [https://salmawaheed77.github.io/portfolio/](https://salmawaheed77.github.io/portfolio/)
 - **LinkedIn**: [linkedin.com/in/salma-waheed-statistics](https://www.linkedin.com/in/salma-waheed-statistics)
 - **GitHub**: [github.com/salmawaheed77](https://github.com/salmawaheed77)
-- **Interactive Resume (Overleaf)**: [Live Overleaf CV](https://www.overleaf.com/read/ggwjysvnhybf#3912e5)
+- **Interactive Resume (PDF)**: [Download CV (PDF)](assets/Salma_Waheed_Resume.pdf)
 
 ---
 

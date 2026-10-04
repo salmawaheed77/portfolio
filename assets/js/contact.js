@@ -107,28 +107,59 @@ function initContactForm() {
 
     if (!isValid) return;
 
-    // Simulating submission feedback
+    // Actual email submission to salmawaheed577@gmail.com
     const originalBtnHtml = submitBtn.innerHTML;
     submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Sending...</span>`;
+    submitBtn.innerHTML = `<span><i data-lucide="loader" class="spin"></i> Sending to Gmail...</span>`;
+    if (window.lucide) lucide.createIcons();
 
-    const name = encodeURIComponent(nameInput.value.trim());
-    const email = encodeURIComponent(emailInput.value.trim());
-    const subject = encodeURIComponent(subjectInput.value.trim());
-    const message = encodeURIComponent(
-      `From: ${nameInput.value.trim()} (${emailInput.value.trim()})\n\n${messageInput.value.trim()}`
-    );
+    const payload = {
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      subject: subjectInput.value.trim(),
+      message: messageInput.value.trim(),
+      _subject: `New Portfolio Message from ${nameInput.value.trim()}: ${subjectInput.value.trim()}`,
+      _captcha: 'false',
+      _template: 'table'
+    };
 
-    setTimeout(() => {
-      // Trigger user's mail client as a direct action
-      const mailtoLink = `mailto:salmawaheed577@gmail.com?subject=${subject}&body=${message}`;
-      window.location.href = mailtoLink;
-
-      window.showToast('Thank you! Opening your email client to send message to Salma.', 'success');
-      form.reset();
+    fetch('https://formsubmit.co/ajax/salmawaheed577@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalBtnHtml;
-    }, 700);
+      if (window.lucide) lucide.createIcons();
+
+      if (data.success === 'true' || data.success === true || (data.message && data.message.includes('success'))) {
+        window.showToast('Message sent! Salma received your inquiry at salmawaheed577@gmail.com.', 'success');
+        form.reset();
+      } else {
+        // FormSubmit confirmation or first-time notification
+        window.showToast('Message submitted! Forwarding to Salma at salmawaheed577@gmail.com.', 'success');
+        form.reset();
+      }
+    })
+    .catch(err => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnHtml;
+      if (window.lucide) lucide.createIcons();
+
+      // Graceful fallback to direct Gmail Web compose
+      const encSubject = encodeURIComponent(subjectInput.value.trim());
+      const encBody = encodeURIComponent(`From: ${nameInput.value.trim()} (${emailInput.value.trim()})\n\n${messageInput.value.trim()}`);
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=salmawaheed577@gmail.com&su=${encSubject}&body=${encBody}`;
+      
+      window.open(gmailUrl, '_blank');
+      window.showToast('Opened Gmail web compose for salmawaheed577@gmail.com. Please click Send!', 'info');
+      form.reset();
+    });
   });
 
   // Clear errors on input
